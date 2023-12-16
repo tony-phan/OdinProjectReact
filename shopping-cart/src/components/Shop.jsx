@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import ProductCard from './ProductCard';
+import style from './stylesheet/products.module.css'
 
 function Shop() {
     const [products, setProducts] = useState([]);
@@ -7,9 +9,8 @@ function Shop() {
         fetch('https://fakestoreapi.com/products')
             .then(res => res.json())
             .then((json) => {
-                const data = json.map((j, index) => {
+                const data = json.map((j) => {
                     return { 
-                        key: index,
                         ...j 
                     }
                 });
@@ -19,7 +20,12 @@ function Shop() {
 
     return (
         <>
-        <h1>Shop component</h1>
+        <h1>Shop</h1>
+        <div className={style.products}>
+            {products.map((product, index) => (
+                <ProductCard product={product} key={index} />
+            ))}
+        </div>
         </>
     )
 }

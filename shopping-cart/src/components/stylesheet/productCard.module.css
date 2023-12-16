@@ -1,0 +1,12 @@
+.card {
+    display: grid;
+    grid-template-rows: 4fr 2fr;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.image {
+    width: 200px;
+    height: auto;
+}
