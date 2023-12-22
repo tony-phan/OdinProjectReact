@@ -1,14 +1,15 @@
+import { useMemo } from "react";
 import { useOutletContext } from "react-router-dom"
 
 function Cart() {
     const context = useOutletContext(); 
     const cart = context.cart;
 
-    const total = Object.values(cart).reduce((accumulator, currentItem) => (
-        accumulator + (currentItem.quantity * currentItem.product.price)
-    ), 0);
+    const total = useMemo(() => {
+        return Object.values(cart).reduce((accumulator, currentItem) => (
+            accumulator + (currentItem.quantity * currentItem.product.price)
+        ), 0)}, [cart]);
 
-    console.log('cart ', cart);
 
     let removeItem = (id) => {
         const newCart = { ...cart };
@@ -18,7 +19,7 @@ function Cart() {
 
     let updateCart = (productId, e) => {
         let newCart = { ...cart };
-        if( +e.target.value > 0) {
+        if(+e.target.value > 0) {
             newCart[productId].quantity = +e.target.value;
         } else {
             delete newCart[productId];
@@ -39,11 +40,10 @@ function Cart() {
                 </li> 
             ))}
         </ul>
-        <h3>Total</h3>
-        <p>${total.toFixed(2)}</p>
-        
+        <p>
+            Total Price: <strong>${total.toFixed(2)}</strong>
+        </p>
         <br />
-
         <button type="button">Checkout</button>
         </>
     )
