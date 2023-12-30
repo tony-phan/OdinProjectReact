@@ -46,7 +46,7 @@ function ProductCard(props) {
 
             <Snackbar open={quantityFlag} onClose={handleClose}>
                 <Alert severity="error" sx={{ width: '600%' }}>
-                    Product quantity must be greater than 0.
+                    Quantity must be greater than 0.
                 </Alert>
             </Snackbar>
         </div>

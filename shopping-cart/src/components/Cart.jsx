@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useOutletContext } from "react-router-dom"
+import style from './stylesheet/cart.module.css'
 
 function Cart() {
     const context = useOutletContext(); 
@@ -28,8 +29,7 @@ function Cart() {
     }
 
     return (
-        <>
-        <h1>Cart</h1>
+        <div className={style}>
         <ul>
             {Object.keys(cart).map((item, index) => (
                 <li key={index}>
@@ -45,7 +45,7 @@ function Cart() {
         </p>
         <br />
         <button type="button">Checkout</button>
-        </>
+        </div>
     )
 }
 

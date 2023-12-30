@@ -26,14 +26,11 @@ function Shop() {
     if(loading) return(<p>Loading...</p>)
 
     return (
-        <>
-        <h1>Shop</h1>
         <div className={style.products}>
             {products.map((product, index) => (
                 <ProductCard product={product} key={index} />
             ))}
         </div>
-        </>
     )
 }
 
